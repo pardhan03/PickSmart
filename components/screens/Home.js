@@ -3,8 +3,7 @@ import { useSelector } from 'react-redux'
 import { img } from '../../assets/public/images';
 
 const Home = () => {
-  const value = useSelector((state) => state.mainSlice.value);
-  const items = useSelector((state) => state.productSlice.items);
+  const items = useSelector((state) => state?.productSlice?.items) || {};
 
   const renderProduct = ({ item }) => (
     <TouchableOpacity
@@ -12,7 +11,7 @@ const Home = () => {
       onPress={() => navigation.navigate("Details", { product: item })}
     >
       <Image
-        source={img.NeckMassager}
+        source={img.ProductIcon}
         style={styles.image}
       />
       <View style={styles.info}>
